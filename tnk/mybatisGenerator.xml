@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!--根据本地环境修改此文件路径 -->
+	<classPathEntry location="D:\maven_repo\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar"/>
+	<classPathEntry location="C:\code\jt_zhb_new\sgjt-prototype-app\target\classes"/>
+	<context id="mybatis3" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+			<!-- 是否生成注释代时间戳 <property name="suppressDate" value="true" /> -->
+		</commentGenerator>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/tnk"
+			userId="liuxing"
+			password="37481022e">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<javaModelGenerator targetPackage="com.sgai.br.entity"
+			targetProject="sggl-app/src/main/java/">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+			<!--根据本地环境修改此文件路径 -->
+			<property name="rootClasspath"  value="D:\work\qinggangliaochang\eclipse-workspace\core-service\target\classes" />
+			<property name="rootClass" value="com.sgai.core.entity.AbstractEntity" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="com.sgai.br.mapper" targetProject="sggl-app/src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		
+		<table tableName="sggl_branch_rebate" domainObjectName="BranchRebate" enableDeleteByExample="false" 
+			enableSelectByExample="false"  enableCountByExample="false" enableUpdateByExample="false"  
+			enableUpdateByPrimaryKey="false">
+		</table>
+	</context>
+</generatorConfiguration>
