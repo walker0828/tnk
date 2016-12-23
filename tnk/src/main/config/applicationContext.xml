@@ -14,12 +14,13 @@
      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 	
     <context:property-placeholder location="classpath:db/dbConfig.properties" />
-	<import resource="spring/datasource.xml" />
+	<import resource="spring/spring-datasource.xml" />
 	<import resource="spring/spring-tx.xml"/>
 	<import resource="spring/spring-mybatis.xml"/>
 	<import resource="spring/spring-thread-pool.xml"/>
+	<import resource="spring/spring-i18n.xml"/>
     <!-- enable component scanning (beware that this does not enable mapper scanning!) -->    
-    <context:component-scan base-package="com.tenderliitch" />
+    <context:component-scan base-package="com.tenderlitch" />
 
     <!-- enable autowire -->
     <context:annotation-config />

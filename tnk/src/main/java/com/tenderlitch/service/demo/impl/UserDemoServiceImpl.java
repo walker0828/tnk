@@ -17,8 +17,6 @@ import com.tenderlitch.service.demo.UserDemoService;
  @Service
 public class UserDemoServiceImpl extends BaseCRUDService<UserDemo> implements UserDemoService
 {
-
-
     
 }
 

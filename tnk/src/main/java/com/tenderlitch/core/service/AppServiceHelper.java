@@ -18,8 +18,6 @@ public class AppServiceHelper implements ApplicationContextAware {
 
 	private static ApplicationContext applicationContext;
 	
-	private static I18nMessage i18nMessage;
-	
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		AppServiceHelper.applicationContext = applicationContext;
@@ -39,19 +37,8 @@ public class AppServiceHelper implements ApplicationContextAware {
 			i18n = applicationContext.getMessage(key, params, locale);
 		} catch (NoSuchMessageException e) {
 			logger.warn("i18n definition for [" + key + "] not found in properties file.");
-			if (getI18nMessage()!=null) {
-				i18n = getI18nMessage().getMessage(key, params, locale);
-			}
 		}
 		return i18n;
 	}
-
-
 	
-	public static I18nMessage getI18nMessage() {
-		if (i18nMessage==null) {
-			i18nMessage = (I18nMessage)AppServiceHelper.findBean("i18nDBMessage");
-		}
-		return i18nMessage;
-	}
 }

@@ -18,7 +18,6 @@ import org.springframework.dao.DuplicateKeyException;
 import com.github.pagehelper.Page;
 import com.tenderlitch.core.exception.DaoException;
 import com.tenderlitch.core.util.ExceptionUtil;
-import com.tenderlitch.core.util.StringUtil;
 import com.tenderlitch.core.web.LoginUtil;
 import com.tenderlitch.core.annotation.MethodLogger;
 import com.tenderlitch.core.entity.AbstractEntity;
@@ -59,14 +58,11 @@ public class BaseCRUDService<T extends AbstractEntity> implements BaseService<T>
 	public Long insert(T entity) {
 		try {
 
-			if (StringUtil.isBlank(entity.getCreatedBy())) {
+			if (StringUtils.isBlank(entity.getCreatedBy())) {
 				entity.setCreatedBy(LoginUtil.getUpcUserId());
 			}
 			if (entity.getCreatedDt()==null) {
 				entity.setCreatedDt(new Date());
-			}
-			if (entity.getTransactionId()==null) {
-				entity.setTransactionId(LoginUtil.getTransactionId());
 			}
 			getBaseMapper().insert(entity);			
 			return entity.getSid();
@@ -100,7 +96,6 @@ public class BaseCRUDService<T extends AbstractEntity> implements BaseService<T>
 		try {
 			entity.setUpdatedBy(LoginUtil.getUpcUserId());
 			entity.setUpdatedDt(new Date());
-			entity.setTransactionId(LoginUtil.getTransactionId());
 			count = getBaseMapper().update(entity);
 			if (count==0) {
 				throw new DaoException("DataNotFoundException", new String[]{entity.getSid().toString(),"update"},null);
@@ -306,7 +301,7 @@ public class BaseCRUDService<T extends AbstractEntity> implements BaseService<T>
             Map.Entry<String, Object> entry =  (Entry<String, Object>) it.next();
             String key = entry.getKey();
             Object value = entry.getValue();
-            summaryResult.put(StringUtil.underlineToCamel(key), value);
+            summaryResult.put(key, value);
         }
 		return summaryResult;
 	}

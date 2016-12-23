@@ -8,7 +8,7 @@
 		depends-on="dataSource">
 		<property name="dataSource" ref="dataSource" />
 		<property name="typeAliasesSuperType" value="com.tenderlitch.core.entity.AbstractEntity" />
-		<property name="mapperLocations" value="classpath*:com/tenderlitch/**/mapper/*Mapper.xml" />
+		<property name="mapperLocations" value="classpath*:com/tenderlitch/mapper/**/*Mapper.xml" />
 		<property name="configLocation" value="classpath:orm/SqlMapConfig.xml"></property>
 	</bean>
 	

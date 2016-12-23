@@ -227,15 +227,6 @@ public class BaseAction<T>  {
 	public Response findByPage() throws Exception {
 		Map<String, Object> params = preparePageParams();
 		PageBounds rowBounds = preparePageBound(request);
-		Map<String,List<String>> businessIDs = LoginUtil.getBusinessIDs();
-		if (businessIDs!=null) {
-			Set<Map.Entry<String, List<String>>> set = businessIDs.entrySet();
-			for (Map.Entry<String, List<String>> me : set) {
-				String name = me.getKey();
-				List<String> value = me.getValue();
-				params.put(name, value);
-			}
-		}
 		Page<T> page = getBaseService().findByPage(params, rowBounds);
 		
 		return new Response().success(new com.tenderlitch.core.query.page.Page<T>(page)); 
@@ -245,15 +236,6 @@ public class BaseAction<T>  {
 	@RequestMapping("/findByParams")
 	public Response findByParams() throws Exception {
 		Map<String, Object> params = preparePageParams();
-		Map<String,List<String>> businessIDs = LoginUtil.getBusinessIDs();
-		if (businessIDs!=null) {
-			Set<Map.Entry<String, List<String>>> set = businessIDs.entrySet();
-			for (Map.Entry<String, List<String>> me : set) {
-				String name = me.getKey();
-				List<String> value = me.getValue();
-				params.put(name, value);
-			}
-		}
 		List<T> list = getBaseService().findByParams(params);
 		return new Response().success(list); 
 	}
@@ -304,15 +286,6 @@ public class BaseAction<T>  {
 	@RequestMapping("/read")
 	public Response read() throws Exception {
 		Map<String, Object> params = preparePageParams();
-		Map<String,List<String>> businessIDs = LoginUtil.getBusinessIDs();
-		if (businessIDs!=null) {
-			Set<Map.Entry<String, List<String>>> set = businessIDs.entrySet();		
-			for (Map.Entry<String, List<String>> me : set) {
-				String name = me.getKey();
-				List<String> value = me.getValue();
-				params.put(name, value);
-			}
-		}
 		List<T> entityLs = getBaseService().find(params);
 		
 		return new Response().success(entityLs); 
@@ -391,19 +364,9 @@ public class BaseAction<T>  {
 	@RequestMapping("/getQuerySummary")
 	public Response getQuerySummary() {
 		Map<String, Object> params = preparePageParams();
-		Map<String,List<String>> businessIDs = LoginUtil.getBusinessIDs();
-		if (businessIDs!=null) {
-			Set<Map.Entry<String, List<String>>> set = businessIDs.entrySet();		
-			for (Map.Entry<String, List<String>> me : set) {
-				String name = me.getKey();
-				List<String> value = me.getValue();
-				params.put(name, value);
-			}
-		}
 		Map<String, Object> summaryMap = getBaseService().getQuerySummary(params);
 		return new Response().success(summaryMap);
 	}
-
 	
     @ModelAttribute  
     public void setReqAndRes(HttpServletRequest request, HttpServletResponse response){  

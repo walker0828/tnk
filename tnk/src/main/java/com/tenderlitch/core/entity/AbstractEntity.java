@@ -24,12 +24,6 @@ public abstract class AbstractEntity {
 	/** 最后更新时间 */
 	private Date updatedDt;
 	
-	/**
-	 * 事务处理ID（requestId或者messageId）
-	 */
-	private String transactionId;
-	
-
 	public Long getSid() {
 		return sid;
 	}
@@ -80,11 +74,4 @@ public abstract class AbstractEntity {
 		this.updatedDt = updatedDt;
 	}
 
-	public String getTransactionId() {
-		return transactionId;
-	}
-
-	public void setTransactionId(String transactionId) {
-		this.transactionId = transactionId;
-	}
 }
