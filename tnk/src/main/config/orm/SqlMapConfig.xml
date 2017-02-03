@@ -24,6 +24,7 @@
 		<setting name="defaultStatementTimeout" value="900" />
 		<!-- 驼峰标识自动设置resultMap -->
 		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<!-- <setting name="logImpl" value="LOG4J"/> -->
 	</settings>
 
 	<typeAliases>

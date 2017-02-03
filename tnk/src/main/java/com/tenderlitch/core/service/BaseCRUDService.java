@@ -2,7 +2,6 @@ package com.tenderlitch.core.service;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -18,11 +17,10 @@ import org.springframework.dao.DuplicateKeyException;
 import com.github.pagehelper.Page;
 import com.tenderlitch.core.exception.DaoException;
 import com.tenderlitch.core.util.ExceptionUtil;
-import com.tenderlitch.core.web.LoginUtil;
+import com.tenderlitch.core.web.PageBounds;
 import com.tenderlitch.core.annotation.MethodLogger;
 import com.tenderlitch.core.entity.AbstractEntity;
 import com.tenderlitch.core.mapper.BaseMapper;
-import com.tenderlitch.core.query.page.PageBounds;
 
 public class BaseCRUDService<T extends AbstractEntity> implements BaseService<T> {
 	
@@ -55,15 +53,9 @@ public class BaseCRUDService<T extends AbstractEntity> implements BaseService<T>
 
 	@Override
 	@MethodLogger(methodDesc="插入数据")
-	public Long insert(T entity) {
+	public Integer insert(T entity) {
 		try {
 
-			if (StringUtils.isBlank(entity.getCreatedBy())) {
-				entity.setCreatedBy(LoginUtil.getUpcUserId());
-			}
-			if (entity.getCreatedDt()==null) {
-				entity.setCreatedDt(new Date());
-			}
 			getBaseMapper().insert(entity);			
 			return entity.getSid();
 		} catch (DuplicateKeyException e) {
@@ -94,8 +86,6 @@ public class BaseCRUDService<T extends AbstractEntity> implements BaseService<T>
 	public int update(T entity) {
 		int count;
 		try {
-			entity.setUpdatedBy(LoginUtil.getUpcUserId());
-			entity.setUpdatedDt(new Date());
 			count = getBaseMapper().update(entity);
 			if (count==0) {
 				throw new DaoException("DataNotFoundException", new String[]{entity.getSid().toString(),"update"},null);
@@ -204,8 +194,6 @@ public class BaseCRUDService<T extends AbstractEntity> implements BaseService<T>
 	@MethodLogger(methodDesc="批量插入数据")
 	public void insertAll(Collection<T> collection) {
 		for(T entity:collection){
-			entity.setCreatedBy(LoginUtil.getUpcUserId());
-			entity.setCreatedDt(new Date());
 			this.insert(entity);			
 		}
 	}

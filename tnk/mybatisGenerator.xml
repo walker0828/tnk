@@ -3,7 +3,7 @@
 <generatorConfiguration>
 	<!--根据本地环境修改此文件路径 -->
 	<classPathEntry location="D:\maven_repo\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar"/>
-	<classPathEntry location="C:\code\jt_zhb_new\sgjt-prototype-app\target\classes"/>
+	<classPathEntry location="E:\git\tnk\tnk\target\classes"/>
 	<context id="mybatis3" targetRuntime="MyBatis3">
 		<commentGenerator>
 			<property name="suppressAllComments" value="true" />
@@ -19,22 +19,22 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 
-		<javaModelGenerator targetPackage="com.sgai.br.entity"
-			targetProject="sggl-app/src/main/java/">
+		<javaModelGenerator targetPackage="com.tenderlitch.entity.upc"
+			targetProject="tnk/src/main/java/">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="false" />
 			<!--根据本地环境修改此文件路径 -->
-			<property name="rootClasspath"  value="D:\work\qinggangliaochang\eclipse-workspace\core-service\target\classes" />
-			<property name="rootClass" value="com.sgai.core.entity.AbstractEntity" />
+			<property name="rootClasspath"  value="E:\git\tnk\tnk\target\classes" />
+			<property name="rootClass" value="com.tenderlitch.core.entity.AbstractEntity" />
 		</javaModelGenerator>
 
-		<sqlMapGenerator targetPackage="com.sgai.br.mapper" targetProject="sggl-app/src/main/resources">
+		<sqlMapGenerator targetPackage="com.tenderlitch.mapper.upc" targetProject="tnk/src/main/sqlmap">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 		
-		<table tableName="sggl_branch_rebate" domainObjectName="BranchRebate" enableDeleteByExample="false" 
-			enableSelectByExample="false"  enableCountByExample="false" enableUpdateByExample="false"  
-			enableUpdateByPrimaryKey="false">
+		<table tableName="UPC_USER" domainObjectName="UpcUser" enableDeleteByPrimaryKey="true" 
+			enableDeleteByExample="false" enableSelectByExample="false"  enableCountByExample="false" enableUpdateByExample="false"  
+			enableUpdateByPrimaryKey="true">
 		</table>
 	</context>
 </generatorConfiguration>

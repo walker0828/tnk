@@ -6,10 +6,12 @@ import java.text.SimpleDateFormat;
 import org.springframework.util.StringUtils;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.tenderlitch.core.web.AjaxResponse;
 
 
 /**
@@ -19,6 +21,12 @@ import com.fasterxml.jackson.databind.SerializationFeature;
  * @since 1.0.0
  */
 public class CustomObjectMapper extends ObjectMapper {
+	
+	public static void main(String[] args) throws JsonProcessingException {
+		CustomObjectMapper a=new CustomObjectMapper();
+		AjaxResponse b=AjaxResponse.success();
+		System.out.println(a.writeValueAsString(b));
+	}
 
 	private boolean camelCaseToLowerCaseWithUnderscores = false;
     private String dateFormatPattern;
@@ -31,7 +39,16 @@ public class CustomObjectMapper extends ObjectMapper {
         this.dateFormatPattern = dateFormatPattern;
     }
 
-    public void init() {
+    @Override
+	public String writeValueAsString(Object value)
+			throws JsonProcessingException {
+		// TODO Auto-generated method stub
+    	System.out.println(value);
+		String result= super.writeValueAsString(value);
+		return result;
+	}
+
+	public void init() {
         // 排除值为空属性
         setSerializationInclusion(JsonInclude.Include.NON_NULL);
         // 进行缩进输出

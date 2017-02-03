@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.github.pagehelper.Page;
-import com.tenderlitch.core.query.page.PageBounds;
+import com.tenderlitch.core.web.PageBounds;
 
 public interface BaseService<T>
 {
@@ -31,7 +31,7 @@ public interface BaseService<T>
      * @param list  实体对象集合
      * @param <T>  实体对象
      */
-    public Long insert(T entity);
+    public Integer insert(T entity);
 
     /**
      * 删除数据集合

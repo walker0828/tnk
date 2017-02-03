@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xmlns:aop="http://www.springframework.org/schema/aop"
-     xmlns:tx="http://www.springframework.org/schema/tx"
-     xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-     xmlns:context="http://www.springframework.org/schema/context"
-     xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
      http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
-	
-    <context:property-placeholder location="classpath:db/dbConfig.properties" />
-	<import resource="spring/spring-datasource.xml" />
-	<import resource="spring/spring-tx.xml"/>
-	<import resource="spring/spring-mybatis.xml"/>
-	<import resource="spring/spring-thread-pool.xml"/>
-	<import resource="spring/spring-i18n.xml"/>
-    <!-- enable component scanning (beware that this does not enable mapper scanning!) -->    
-    <context:component-scan base-package="com.tenderlitch" />
 
-    <!-- enable autowire -->
-    <context:annotation-config />
-	<bean id="customObjectMapper" class="com.tenderlitch.core.json.CustomObjectMapper" init-method="init">
-		<property name="camelCaseToLowerCaseWithUnderscores" value="false"/>
-		<property name="dateFormatPattern" value="yyyy-MM-dd HH:mm:ss"/>
+	<context:property-placeholder location="classpath:db/dbConfig.properties" />
+	<import resource="spring/spring-datasource.xml" />
+	<import resource="spring/spring-tx.xml" />
+	<import resource="spring/spring-mybatis.xml" />
+	<import resource="spring/spring-thread-pool.xml" />
+	<import resource="spring/spring-i18n.xml" />
+	<!-- enable component scanning (beware that this does not enable mapper 
+		scanning!) -->
+	<context:component-scan base-package="com.tenderlitch" />
+
+	<!-- enable autowire -->
+	<context:annotation-config />
+	<bean id="customObjectMapper" class="com.tenderlitch.core.json.CustomObjectMapper"
+		init-method="init">
+		<property name="camelCaseToLowerCaseWithUnderscores" value="false" />
+		<property name="dateFormatPattern" value="yyyy-MM-dd HH:mm:ss" />
 	</bean>
-    <bean class="com.tenderlitch.core.service.AppServiceHelper" id="appServiceHelper"/>
+	<bean class="com.tenderlitch.core.service.AppServiceHelper" id="appServiceHelper" />
+
 </beans>
