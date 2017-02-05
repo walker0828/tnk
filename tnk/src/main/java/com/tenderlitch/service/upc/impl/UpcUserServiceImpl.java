@@ -11,10 +11,13 @@ import com.tenderlitch.core.service.BaseCRUDService;
 import com.tenderlitch.entity.upc.UpcUser;
 import com.tenderlitch.mapper.upc.UpcUserMapper;
 import com.tenderlitch.service.upc.UpcUserService;
-import com.tenderlitch.core.annotation.ServiceLogger;
 
+/**
+ * 系统登录用户业务逻辑处理器接口实现
+ * @author tenderliTch
+ *
+ */
 @Service
-@ServiceLogger(serviceModel = "", serviceDesc = "")
 public class UpcUserServiceImpl extends BaseCRUDService<UpcUser> implements UpcUserService
 {
 

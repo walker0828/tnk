@@ -968,6 +968,41 @@ var App = function () {
                 _defaultOption= $.extend(_defaultOption,option);
             }
             $.gritter.add(_defaultOption);
+        },
+
+        /**
+         * 重置表单元素的值和校验状态,隐藏额外的错误信息
+         * @param form 要重置的表单
+         * @param additional 要隐藏的错误信息元素,可以是数组或单个对象
+         */
+        resetForm: function(form,additional){
+            if(form){
+                //新增的时候清理输入框(因为新增和修改操作打开的是同一个form元素)
+                if(form.clearForm)form.clearForm(true);
+                //清理验证状态
+                if(form.data && form.data('validator') && form.resetForm)form.data('validator').resetForm();
+            }
+
+            if(additional){
+                if($.isArray(additional)){
+                    $.each(additional,function(toHide){
+                        if(toHide.hide)toHide.hide();
+                    })
+                }else{
+                    if(additional.hide)additional.hide();
+                }
+            }
+        },
+
+        /**
+         * 将json数据绑定到表单中
+         * @param form
+         * @param data
+         */
+        bindForm: function(form,data){
+            $('input,textarea,select[name]',form).each(function(index,field){
+                $(field).val(data[field.name]);
+            });
         }
 
     };

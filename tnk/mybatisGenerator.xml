@@ -32,7 +32,11 @@
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 		
-		<table tableName="UPC_USER" domainObjectName="UpcUser" enableDeleteByPrimaryKey="true" 
+		<table tableName="UPC_PAGE" domainObjectName="UpcPage" enableDeleteByPrimaryKey="true" 
+			enableDeleteByExample="false" enableSelectByExample="false"  enableCountByExample="false" enableUpdateByExample="false"  
+			enableUpdateByPrimaryKey="true">
+		</table>
+		<table tableName="UPC_ROLE" domainObjectName="UpcRole" enableDeleteByPrimaryKey="true" 
 			enableDeleteByExample="false" enableSelectByExample="false"  enableCountByExample="false" enableUpdateByExample="false"  
 			enableUpdateByPrimaryKey="true">
 		</table>

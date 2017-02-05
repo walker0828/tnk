@@ -4,6 +4,11 @@ import com.tenderlitch.core.mapper.BaseMapper;
 import com.tenderlitch.core.repository.BaseRepository;
 import com.tenderlitch.entity.upc.UpcUser;
 
+/**
+ * 系统登陆用户表持久化接口
+ * @author tenderliTch
+ *
+ */
 @BaseRepository
 public interface UpcUserMapper  extends BaseMapper<UpcUser> {
 	/**
@@ -15,5 +20,10 @@ public interface UpcUserMapper  extends BaseMapper<UpcUser> {
 	 */
 	static final String PASSWORD_PARAM_KEY="password";
 	
+	/**
+	 * 查询account账户的个数(判定是否唯一的标准)
+	 * @param account
+	 * @return
+	 */
 	int findCountByAccount(String account);
 }

@@ -30,7 +30,7 @@
 	</mvc:interceptors>
 
 	<mvc:annotation-driven>
-	<!-- 解决@ResponseBody方法返回字符串时中文乱码 -->
+		<!-- 解决@ResponseBody方法返回字符串时中文乱码 -->
 		<mvc:message-converters register-defaults="true">
 			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
 				<property name="supportedMediaTypes">
@@ -49,6 +49,11 @@
 			expression="org.springframework.stereotype.Service" />
 	</context:component-scan>
 
+	<bean id="customObjectMapper" class="com.tenderlitch.core.json.CustomObjectMapper"
+		init-method="init">
+		<property name="camelCaseToLowerCaseWithUnderscores" value="false" />
+		<property name="dateFormatPattern" value="yyyy-MM-dd HH:mm:ss" />
+	</bean>
 	<!--启动Spring MVC的注解功能完成请求和注解POJO的映射 -->
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />

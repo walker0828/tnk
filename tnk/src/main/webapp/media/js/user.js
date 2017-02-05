@@ -6,35 +6,6 @@ var UserTable = function () {
 
     return {
 
-        /**
-         * 重置表单元素的值和校验状态,隐藏额外的错误信息
-         * @param form 要重置的表单
-         * @param additional 要隐藏的错误信息元素,可以是数组或单个对象
-         */
-        resetForm: function(form,additional){
-            if(form){
-                //新增的时候清理输入框(因为新增和修改操作打开的是同一个form元素)
-                if(form.clearForm)form.clearForm(true);
-                //清理验证状态
-                if(form.data && form.data('validator') && form.resetForm)form.data('validator').resetForm();
-            }
-
-            if(additional){
-                if($.isArray(additional)){
-                    $.each(additional,function(toHide){
-                        if(toHide.hide)toHide.hide();
-                    })
-                }else{
-                    if(additional.hide)additional.hide();
-                }
-            }
-        },
-        bindForm: function(form,data){
-            $('input,textarea,select[name]',form).each(function(index,field){
-                $(field).val(data[field.name]);
-            });
-        },
-
         //main function to initiate the module
         init: function () {
 
@@ -190,7 +161,7 @@ var UserTable = function () {
             //新增按钮点击事件
             $('#user_edit_table_add_btn').click(function(e){
                 e.preventDefault();
-                me.resetForm(form1);
+                App.resetForm(form1);
                 //设置account输入框为可编辑
                 $('#user_edit_win_account',form1).removeProp('readonly')
                     .removeClass('ignore');//设置account不需要校验
@@ -204,13 +175,13 @@ var UserTable = function () {
                 var selectedRow=$(':radio:checked',tableElement).parents('tr')[0];
                 if(selectedRow){
                     var aData = oTable.fnGetData(selectedRow);
-                    me.resetForm(form1);
+                    App.resetForm(form1);
                     //将密码框的值设置到重复密码框中去
                     aData['password2']=aData['password'];
                     //设置account输入框为不可编辑
                     $('#user_edit_win_account',form1).prop('readonly',true)
                         .addClass('ignore');//设置account不需要校验
-                    me.bindForm(form1,aData);
+                    App.bindForm(form1,aData);
                     user_edit_win_modal.modal();
                 }else{
                     App.message('请在行的头部勾选以选择要修改的用户');
