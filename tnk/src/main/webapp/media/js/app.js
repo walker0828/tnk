@@ -1003,6 +1003,136 @@ var App = function () {
             $('input,textarea,select[name]',form).each(function(index,field){
                 $(field).val(data[field.name]);
             });
+        },
+
+        /**
+         * 将table转变成DataTable,并增加分页控件和筛选控件
+         * @param tableElement
+         * @param option
+         */
+        dataTable: function(tableElement,option){
+            var _default={
+                "aLengthMenu": [
+                    [5, 15, 20, -1],
+                    [5, 15, 20, "全部"] // change per page values here
+                ],
+                // set the initial value
+                "iDisplayLength": 5,
+                "aaSorting": [],//默认情况下排序列是第一列,这里去掉第一列排序的默认值
+                "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+                "sPaginationType": "bootstrap",
+                "oLanguage": {
+                    "oSearchInputPlaceHolder":"通过名称筛选",
+                    "sLengthMenu": "_MENU_ 条记录每页",
+                    "oPaginate": {
+                        "sPrevious": "上一页",
+                        "sNext": "下一页"
+                    },
+                    "sSearch":"搜索&nbsp;&nbsp;",
+                    "sInfo": "从第 _START_ 到第 _END_ 条,总计 _TOTAL_ 条",
+                    "sInfoEmpty":"数据集为空",
+                    "sEmptyTable":"无符合条件的数据",
+                    "sZeroRecords":"无符合条件的数据",
+                    "sLoadingRecords":'<i class="icon-coffee"></i>&nbsp;数据加载中...'
+                },
+                "aoColumnDefs": [{
+                    'bSortable': false,
+                    'aTargets': [0]
+                }],
+                "bServerSide":true,
+                "fnDrawCallback":function(oSetting){
+                    //异步加载数据并且绘制完成之后,为数据行中的radio控件加载uniform样式
+                    App.initUniform($(':radio',oSetting.nTable));
+                }
+            };
+            var opt= $.extend({},_default,option);
+            var dataTable=tableElement.dataTable(opt);
+
+            //点击行来切换选择行
+            tableElement.on( 'click', 'tbody td', function () {
+                var td=$(this);
+                if(td.children('span.row-details').length>0) return;
+
+                var tr=td.parent('tr');
+                if(tr.hasClass('selected')){
+                    tr.removeClass('selected');
+                    $.uniform.update($(':radio',tr).removeAttr('checked'));
+                }else{
+                    var trFormerSelected=$('tr.selected',tr.parent('tbody')),
+                        radioFormerChecked=$(':radio',trFormerSelected);
+                    trFormerSelected.removeClass('selected');
+                    tr.addClass('selected');
+                    $.uniform.update([$(':radio',tr).attr('checked',true),radioFormerChecked]);
+                }
+            } );
+
+            //搜索和每页行数控件初始化
+            var user_editable_wrapper=$('#'+tableElement.attr('id')+'_wrapper'),
+                dataTables_filter_input=$('.dataTables_filter input',user_editable_wrapper),
+                dataTables_length_select=$('.dataTables_length select',user_editable_wrapper);
+            dataTables_filter_input.addClass("m-wrap medium");// modify table search input
+            dataTables_length_select.addClass("m-wrap small").select2({
+                minimumResultsForSearch: -1//hide search box with special css class
+            });// modify table per page dropdown // initialzie select2 dropdown
+
+            if(option.lxTableDetail){
+                tableElement.on('click', 'tbody td .row-details', function (e) {
+                    e.preventDefault();
+                    var nTr = $(this).parents('tr')[0];
+                    if ( dataTable.fnIsOpen(nTr) )
+                    {
+                        /* This row is already open - close it */
+                        $(this).addClass("row-details-close").removeClass("row-details-open");
+                        dataTable.fnClose( nTr );
+                    }
+                    else
+                    {
+                        /* Open this row */
+                        $(this).addClass("row-details-open").removeClass("row-details-close");
+                        dataTable.fnOpen( nTr, option.fnFormatDetails(dataTable, nTr), 'details' );
+                    }
+                });
+            }
+
+            return dataTable;
+        },
+
+        /**
+         * 为form添加校验
+         * @param form
+         * @param error
+         * @param option
+         */
+        validateForm: function(form,option){
+            var _default={
+                errorElement: 'span', //default input error message container
+                errorClass: 'help-inline', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                ignore: ".ignore",
+                invalidHandler: function () { //display error alert on form submit
+                    App.scrollTo($(option.errorContainer), -200);
+                },
+
+                highlight: function (element) { // hightlight error inputs
+                    $(element)
+                        .closest('.help-inline').removeClass('ok'); // display OK icon
+                    $(element)
+                        .closest('.control-group').removeClass('success').addClass('error'); // set error class to the control group
+                },
+
+                unhighlight: function (element) { // revert the change dony by hightlight
+                    $(element)
+                        .closest('.control-group').removeClass('success').removeClass('error'); // set error class to the control group
+                },
+
+                success: function (label) {
+                    label
+                        .addClass('valid').addClass('help-inline ok') // mark the current input as valid and display OK icon
+                        .closest('.control-group').removeClass('error').addClass('success'); // set success class to the control group
+                }
+            };
+            var opt= $.extend({},_default,option);
+            return form.validate(opt);
         }
 
     };

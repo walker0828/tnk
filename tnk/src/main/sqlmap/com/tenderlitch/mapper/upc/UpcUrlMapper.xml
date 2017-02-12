@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tenderlitch.mapper.upc.UpcUrlMapper" >
+  <resultMap id="BaseResultMap" type="com.tenderlitch.entity.upc.UpcUrl" >
+    <id column="SID" property="sid" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="GROUP_SID" property="groupSid" jdbcType="INTEGER" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="VERSION" property="version" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SID, NAME, GROUP_SID, URL, DESCRIPTION, VERSION
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from upc_url
+    where SID = #{sid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="find" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from upc_url
+    <trim prefix="WHERE" prefixOverrides="AND">
+    	<if test="name!=null and name != ''">
+    		and NAME=#{name,jdbcType=VARCHAR)
+    	</if>
+    	<if test="url !=null and url != ''">
+    		and URL=#{url,jdbcType=VARCHAR)
+    	</if>
+    </trim>
+  </select>
+  
+  <!-- 根据roleSid查找拥有的page -->
+  <select id="findUrlByRoleSid" parameterType="int" resultType="com.tenderlitch.entity.upc.UpcUrl">
+  	SELECT
+		p.SID,
+		p.NAME,
+		p.GROUP_SID,
+		g.NAME as GROUP_NAME,
+		p.URL,
+		p.DESCRIPTION,
+		p.VERSION
+	FROM
+		upc_url p,
+		upc_role_r2_url rrp,
+		upc_url_group g
+	WHERE
+		p.SID=rrp.URL_SID
+	and g.SID=p.GROUP_SID
+	and rrp.ROLE_SID = ${value}
+  </select>
+  
+  <!-- 资源组关联查询 -->
+  <select id="findByGroupSid" parameterType="int" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from upc_url
+    where GROUP_SID=${value}
+  </select>
+  
+  <!-- 资源组查询 -->
+  <resultMap id="GroupResultMap" type="com.tenderlitch.entity.upc.UpcUrlGroup" >
+    <id column="SID" property="sid" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="VERSION" property="version" jdbcType="INTEGER" />
+    <collection property="urls" column="SID" ofType="com.tenderlitch.entity.upc.UpcUrl" select="findByGroupSid"></collection>
+  </resultMap>
+  <select id="findGroup" parameterType="map" resultMap="GroupResultMap">
+  	select SID,NAME,VERSION from UPC_URL_GROUP
+  	<trim prefix="WHERE" prefixOverrides="AND">
+  		<if test="name != null and name != ''">
+  			and NAME=#{name,jdbcType=VARCHAR}
+  		</if>
+  	</trim>
+  </select>
+</mapper>

@@ -22,6 +22,7 @@ import com.tenderlitch.entity.upc.UpcUser;
 import com.tenderlitch.service.upc.UpcUserService;
 
 /**
+ * 管理登陆和权限的控制器
  * @author tenderliTch
  *
  */

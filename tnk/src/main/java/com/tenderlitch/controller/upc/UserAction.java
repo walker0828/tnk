@@ -12,6 +12,11 @@ import com.tenderlitch.core.web.AjaxResponse;
 import com.tenderlitch.entity.upc.UpcUser;
 import com.tenderlitch.service.upc.UpcUserService;
 
+/**
+ * 维护系统登陆用户的控制器
+ * @author tenderliTch
+ *
+ */
 @Controller
 @Scope("prototype")
 @RequestMapping("/page/user")

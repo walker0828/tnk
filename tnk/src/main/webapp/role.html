@@ -15,7 +15,7 @@
 
                 <a class="btn blue" href="#" data-toggle="dropdown">
 
-                    <i class="icon-cogs"></i> 操作
+                    <i class="icon-cogs"></i> 维护
 
                     <i class="icon-angle-down"></i>
 
@@ -23,11 +23,11 @@
 
                 <ul class="dropdown-menu pull-right">
 
-                    <li><a href="script:;" id="role_edit_table_add_btn"><i class="icon-plus"></i> 增加</a></li>
+                    <li><a href="#" id="role_edit_table_add_btn"><i class="icon-plus"></i> 增加</a></li>
 
-                    <li><a href="script:;" id="role_edit_table_edit_btn"><i class="icon-pencil"></i> 修改</a></li>
+                    <li><a href="#" id="role_edit_table_edit_btn"><i class="icon-pencil"></i> 修改</a></li>
 
-                    <li><a href="script:;" id="role_edit_table_del_btn"><i class="icon-trash"></i> 删除</a></li>
+                    <li><a href="#" id="role_edit_table_del_btn"><i class="icon-trash"></i> 删除</a></li>
 
                     <li class="divider"></li>
 
@@ -51,6 +51,7 @@
 
             <tr>
 
+                <th style="width: 8px;"></th>
                 <th style="width: 8px;"></th>
 
                 <th>名称</th>
@@ -85,7 +86,7 @@
 
                 <form id="role_edit_form" action="page/role/save" class="form-horizontal">
 
-                    <div class="alert alert-error hide">
+                    <div class="alert alert-error hide" id="role_edit_win_error">
                         <!--<button class="close" data-dismiss="alert"></button>-->
                         您的输入有误,请检查.
                     </div>
@@ -101,7 +102,7 @@
 
                         <div class="controls">
 
-                            <input type="text" id="role_edit_win_name" name="name" class="m-wrap span12" placeholder="角色名称"/>
+                            <input type="text" id="role_edit_win_name" name="name" class="m-wrap span12" placeholder="角色名称" autofocus="autofocus"/>
 
                             <!--<span class="help-inline"></span>-->
 
@@ -115,27 +116,11 @@
 
                         <div class="controls">
 
-                            <select multiple="multiple" id="role_edit_win_pages" name="pages">
+                            <select multiple="multiple" id="role_edit_win_pages" name="urlSids" class="m-wrap span12">
 
                             </select>
 
-                            <!--<span class="help-inline"></span>-->
 
-                        </div>
-
-                    </div>
-
-                    <div class="control-group">
-
-                        <label class="control-label" for="role_edit_win_users"><span class="required">*</span>成员</label>
-
-                        <div class="controls">
-
-                            <select multiple="multiple" id="role_edit_win_users" name="users">
-
-                            </select>
-
-                            <!--<span class="help-inline"></span>-->
 
                         </div>
 
@@ -147,8 +132,8 @@
 
                         <div class="controls">
 
-                            <textarea class="span12 m-wrap" rows="3" id="user_edit_win_description" name="description" class="m-wrap span12" placeholder="对这个账户的描述"></textarea>
-                            <!--<span class="help-inline"></span>-->
+                            <textarea class="span12 m-wrap" rows="3" id="user_edit_win_description" name="description" class="m-wrap span12" placeholder="对这个角色的描述"></textarea>
+                            <span class="help-inline">选取当前角色拥有权限的页面,拥有这个角色的用户将能访问这些页面.</span>
 
                         </div>
 
@@ -175,9 +160,6 @@
 <script>
 
     jQuery(document).ready(function() {
-        //comment by tenderlitch@20170105 这里不再需要调用此方法以免增加重复的监听
-        //App.init();
-
         RoleTable.init();
     });
 

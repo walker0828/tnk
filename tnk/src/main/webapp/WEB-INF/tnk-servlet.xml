@@ -10,15 +10,6 @@
 	http://www.springframework.org/schema/mvc/spring-mvc.xsd"
 	default-autowire="byName">
 
-	<!-- free to access static resources -->
-	<!-- <mvc:default-servlet-handler/> -->
-
-	<!-- <mvc:resources location="/" mapping="/resource/**"/> -->
-	<!-- <mvc:resources location="*.html" mapping="*.html" /> <mvc:resources 
-		location="/css/" mapping="/css/**" /> <mvc:resources location="/fonts/" mapping="/fonts/**" 
-		/> <mvc:resources location="/img/" mapping="/img/**" /> <mvc:resources location="/js/" 
-		mapping="/js/**" /> -->
-
 	<!--配置拦截器, 多个拦截器,顺序执行 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
@@ -42,12 +33,9 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-	<!-- <context:annotation-config /> -->
-	<!-- 自动搜索@Controller,@Service,@Repository标注的类 -->
-	<context:component-scan base-package="com.tenderlitch.controller">
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.stereotype.Service" />
-	</context:component-scan>
+	
+	<!-- 自动搜索@Controller类 -->
+	<context:component-scan base-package="com.tenderlitch.controller"/>
 
 	<bean id="customObjectMapper" class="com.tenderlitch.core.json.CustomObjectMapper"
 		init-method="init">
@@ -119,14 +107,10 @@
 		</property>
 	</bean>
 
+	<!-- 文件上传请求处理器 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!--<property name="maxUploadSize" value="10485760"></property> -->
 	</bean>
-
-	<!-- comment by tenderlitch@20170111 使用com.tenderlitch.core.advice.ExceptionAdvice来处理异常感觉更好更方便 -->
-	<!-- 异常处理机制 -->
-	<!-- <bean id="exceptionHandler" class="com.tenderlitch.core.exception.CommonExceptionHandler" 
-		/> -->
 
 </beans>

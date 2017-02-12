@@ -87,3 +87,14 @@
   color: #aaa;
   cursor: text;
 }
+
+/**
+* add by tenderlitch@20180209 为multiselect增加可选区域和已选区域头部div的样式
+*/
+.ms-container .selectable-header,
+.ms-container .selection-header{
+  text-align: center;
+  padding: 3px;
+  background: #888;
+  color: #fff;
+}

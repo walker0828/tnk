@@ -4,163 +4,123 @@
  */
 var RoleTable = function () {
 
+    /**
+     * 初始化编辑窗口多选控件
+     */
+    var initMultiSelector=function(pagesSelector){
+        $.ajax({
+            url:'page/role/getUrls',
+            dataType:'json',
+            success:function(data){
+                if(data && data.length>0){
+                    $.each(data,function(inx,group){
+                        if(group){
+                            var optGroup=$('<optgroup>').attr('label',group['name']);
+                            if(group['urls'] && group['urls'].length>0){
+                                $.each(group['urls'],function(inx,url){
+                                    var option=$('<option>').val(url['sid']).html(url['name']);
+                                    optGroup.append(option);
+                                });
+                            }
+                            pagesSelector.append(optGroup);
+                        }
+                    });
+                }
+                pagesSelector.multiSelect({
+                    //增加"可选区域"和"已选区域"
+                    selectableHeader:'<div class="selectable-header">可选项</div>',
+                    selectionHeader:'<div class="selection-header">已选项</div>',
+                    //为multiselect触发单独的validate处理过程,因为jquery.validate不会监控multiselect
+                    afterSelect:function(){
+                        this.$element.valid();
+                    },
+                    afterDeselect:function(){
+                        this.$element.valid();
+                    }
+                });
+            }
+        })
+
+    };
+
     return {
 
         //main function to initiate the module
         init: function () {
 
-            var me=this,
-                tableElement=$('#role_editable')/*,
-
-                oTable = tableElement.dataTable({
-                    "aLengthMenu": [
-                        [5, 15, 20, -1],
-                        [5, 15, 20, "全部"] // change per page values here
-                    ],
-                    // set the initial value
-                    "iDisplayLength": 5,
-                    "aaSorting": [],//默认情况下排序列是第一列,这里去掉第一列排序的默认值
-                    "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
-                    "sPaginationType": "bootstrap",
-                    "oLanguage": {
-                        "oSearchInputPlaceHolder":"通过名称筛选",
-                        "sLengthMenu": "_MENU_ 条记录每页",
-                        "oPaginate": {
-                            "sPrevious": "上一页",
-                            "sNext": "下一页"
-                        },
-                        //add by tenderlitch@20170105 修改dataTable显示文字
-                        "sSearch":"搜索&nbsp;&nbsp;",
-                        "sInfo": "从第 _START_ 到第 _END_ 条,总计 _TOTAL_ 条",
-                        "sInfoEmpty":"数据集为空",
-                        "sEmptyTable":"无符合条件的数据",
-                        "sZeroRecords":"无符合条件的数据",
-                        "sLoadingRecords":'<i class="icon-coffee"></i>&nbsp;数据加载中...'
-                    },
-                    "aoColumnDefs": [{
-                        'bSortable': false,
-                        'aTargets': [0]
-                    }],
+            var tableElement=$('#role_editable'),
+                oTable = App.dataTable(tableElement,{
                     "aoColumns": [
                         { "mDataProp":function(){
-                            return '<input type="radio" class="checkboxes" name="user-table-radio"/>';
+                            return '<span class="row-details row-details-close"></span>';
                         }},
-                        { "mDataProp": "account" },
-                        { "mDataProp": "password", "bSortable": false },
-                        { "mDataProp": "email" },
+                        { "mDataProp":function(){
+                            return '<input type="radio" class="checkboxes" name="role-table-radio"/>';
+                        },"bSortable": false},
+                        { "mDataProp": "name" },
                         { "mDataProp": "description", "bSortable": false }
                     ],
-                    //add by tenderlitch@20170105 远程获取数据
                     "sAjaxSource":"page/role/findByPage",
-                    "bServerSide":true,
-                    "fnDrawCallback":function(oSetting){
-                        //异步加载数据并且绘制完成之后,为数据行中的radio控件加载uniform样式
-                        App.initUniform($(':radio',oSetting.nTable));
+                    //声明表格有detail区域
+                    "lxTableDetail":true,
+                    //格式化数据表格行的detail区域
+                    "fnFormatDetails":function(oTable, nTr) {
+                        var aData = oTable.fnGetData( nTr );
+
+                        var sOut = '';
+                        if(aData && aData['urls'] && aData['urls'].length>0){
+                            //对URL根据group来分组显示
+                            var groupedUrls={};
+                            $.each(aData['urls'],function(idx,url){
+                                var urlArray=groupedUrls[url['groupName']];
+                                if(!urlArray){
+                                    urlArray=[];
+                                    groupedUrls[url['groupName']]=urlArray;
+                                }
+                                urlArray.push(url);
+                            });
+                            for(var group in groupedUrls){
+                                sOut += '<h5>'+group+'</h5><table>';
+                                var urls=groupedUrls[group];
+                                if(urls && urls.length>0){
+                                    $.each(urls,function(idx,url){
+                                        sOut += '<tr><td><b>'+url['name']+'</b>:</td><td><i>'+url['url']+'</i></td><td>'+url['description']+'</td></tr>';
+                                    })
+                                }
+                                sOut += '</table>';
+                            }
+                        }
+                        return sOut;
                     }
-                    /!*"sAjaxDataProp":"ajaxResponse.data.aaData"*!/
-
-            })*/;
-
-            /**add by tenderlitch@20170118 为jquery.dataTable增加"点击行选择"功能**/
-            /*$('tbody',tableElement).on( 'click', 'tr', function () {
-                var tr=$(this);
-                if(tr.hasClass('selected')){
-                    tr.removeClass('selected');
-                    $.uniform.update($(':radio',tr).removeAttr('checked'));
-                }else{
-                    var trFormerSelected=$('tr.selected',tr.parent('tbody')),
-                        radioFormerChecked=$(':radio',trFormerSelected);
-                    trFormerSelected.removeClass('selected');
-                    tr.addClass('selected');
-                    $.uniform.update([$(':radio',tr).attr('checked',true),radioFormerChecked]);
-                }
-            } );*/
-
-            /*var user_editable_wrapper=$('#user_editable_wrapper'),
-                dataTables_filter_input=$('.dataTables_filter input',user_editable_wrapper),
-                dataTables_length_select=$('.dataTables_length select',user_editable_wrapper);
-            dataTables_filter_input.addClass("m-wrap medium");// modify table search input
-            dataTables_length_select.addClass("m-wrap small").select2({
-                minimumResultsForSearch: -1//hide search box with special css class
-            });// modify table per page dropdown // initialzie select2 dropdown*/
-
-
-            var form1 = $('#role_edit_form');
-            var error1 = $('.alert-error', form1);
+                }),
+                form1 = $('#role_edit_form'),
+                pagesSelector=$('#role_edit_win_pages',form1),
+                //编辑窗口
+                role_edit_win_modal=$('#role_edit_win');
 
             //初始化form表单中的多选框
-            $('#role_edit_win_pages',form1).multiSelect();
-            $('#role_edit_win_users',form1).multiSelect();
+            initMultiSelector(pagesSelector);
 
             //编辑窗口的验证
-            var validator=form1.validate({
-                errorElement: 'span', //default input error message container
-                errorClass: 'help-inline', // default input error message class
-                focusInvalid: false, // do not focus the last invalid input
-                ignore: ".ignore",
+            App.validateForm(form1,{
                 rules: {
                     name: {
                         minlength: 1,
                         maxlength: 32,
                         required: true
                     },
-                    pages: {
-                        required: true
-                    },
-                    users: {
+                    pageSids: {
                         required: true
                     }
                 },
-
-                invalidHandler: function () { //display error alert on form submit
-                    error1.show();
-                    App.scrollTo(error1, -200);
-                },
-
-                highlight: function (element) { // hightlight error inputs
-                    $(element)
-                        .closest('.help-inline').removeClass('ok'); // display OK icon
-                    $(element)
-                        .closest('.control-group').removeClass('success').addClass('error'); // set error class to the control group
-                },
-
-                unhighlight: function (element) { // revert the change dony by hightlight
-                    $(element)
-                        .closest('.control-group').removeClass('success').removeClass('error'); // set error class to the control group
-                },
-
-                success: function (label) {
-                    label
-                        .addClass('valid').addClass('help-inline ok') // mark the current input as valid and display OK icon
-                        .closest('.control-group').removeClass('error').addClass('success'); // set success class to the control group
-                    //判断form的field是否都校验通过,如果是,去掉额外的提示信息栏
-                    if(validator.numberOfInvalids()===0) error1.hide();
-                }/*,
-                //去掉这里,不然jquery.form插件无法提交表单,提交表单的代码就只能写在这里
-                submitHandler: function (form) {
-                    error1.hide();
-                }*/
+                errorContainer:'#role_edit_win_error'
             });
-            //为重复密码输入框添加验证,因为这个数据不需要提交,所以没有name属性,所以不能写在上面的配置中
-            //这里还是放到rules声明中去,因为下面的声明方式的触发时机是失去焦点,而表单提交事件不会触发下面的验证
-            //TODO 可是试一下jQuery.validator.addClassRules( rules )
-            /*$( "#user_edit_win_account2" ,form1).rules( "add", {
-                equalTo: '#user_edit_win_password',
-                //下面这些也需要,不然当密码和重复密码都不填的时候,重复密码部分的验证会是"正确"
-                minlength: 6,
-                maxlength: 32,
-                required: true
-            });*/
 
-            //编辑窗口
-            var role_edit_win_modal=$('#role_edit_win');
             //新增按钮点击事件
             $('#role_edit_table_add_btn').click(function(e){
                 e.preventDefault();
                 App.resetForm(form1);
-                //设置account输入框为可编辑
-                /*$('#user_edit_win_account',form1).removeProp('readonly')
-                    .removeClass('ignore');//设置account不需要校验*/
+                pagesSelector.multiSelect('refresh');
                 role_edit_win_modal.modal();
             });
 
@@ -172,27 +132,23 @@ var RoleTable = function () {
                 if(selectedRow){
                     var aData = oTable.fnGetData(selectedRow);
                     App.resetForm(form1);
-                    //将密码框的值设置到重复密码框中去
-                    aData['password2']=aData['password'];
-                    //设置account输入框为不可编辑
-                    $('#user_edit_win_account',form1).prop('readonly',true)
-                        .addClass('ignore');//设置account不需要校验
                     App.bindForm(form1,aData);
-                    user_edit_win_modal.modal();
+                    pagesSelector.multiSelect('refresh');
+                    role_edit_win_modal.modal();
                 }else{
-                    App.message('请在行的头部勾选以选择要修改的用户');
+                    App.message('请选择要修改的角色');
                 }
             });
 
             //删除按钮点击事件
-            $('#user_edit_table_del_btn').click(function(e){
+            $('#role_edit_table_del_btn').click(function(e){
                 e.preventDefault();
                 //获取选择的行数据
                 var selectedRow=$(':radio:checked',tableElement).parents('tr')[0];
                 if(selectedRow){
                     var aData = oTable.fnGetData(selectedRow);
                     $.ajax({
-                        url:'page/user/destroy',
+                        url:'page/role/destroy',
                         type:'POST',
                         data:{
                             sid:aData.sid,
@@ -204,7 +160,7 @@ var RoleTable = function () {
                         }
                     });
                 }else{
-                    App.message('请在行的头部勾选以选择要删除的用户');
+                    App.message('请选择要删除的用户');
                 }
             });
 
@@ -213,7 +169,7 @@ var RoleTable = function () {
                 type:'post',
                 success:function(){
                     oTable.fnDraw(true);//刷新表格
-                    user_edit_win_modal.data('bs.modal').hide();//关闭窗口
+                    role_edit_win_modal.data('bs.modal').hide();//关闭窗口
                     App.message('保存成功');
                 }
             });

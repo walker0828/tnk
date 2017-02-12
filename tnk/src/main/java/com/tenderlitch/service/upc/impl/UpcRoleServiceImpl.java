@@ -1,9 +1,14 @@
 package com.tenderlitch.service.upc.impl;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.tenderlitch.core.service.BaseCRUDService;
 import com.tenderlitch.entity.upc.UpcRole;
+import com.tenderlitch.mapper.upc.UpcRoleMapper;
 import com.tenderlitch.service.upc.UpcRoleService;
 
 /**
@@ -15,4 +20,66 @@ import com.tenderlitch.service.upc.UpcRoleService;
 public class UpcRoleServiceImpl extends BaseCRUDService<UpcRole> implements UpcRoleService
 {
 
+	/**
+	 * 覆盖父类新增方法,增加对角色拥有的页面权限的数据保存逻辑
+	 */
+	@Override
+	public Integer insert(UpcRole upcRole) {
+		Integer sid= super.insert(upcRole);
+		
+		//保存角色拥有的页面数据
+		List<Integer> urlSids=upcRole.getUrlSids();
+		if(urlSids!=null && urlSids.size()>0){
+			insertRoleR2Page(upcRole);
+		}
+		
+		return sid;
+	}
+	
+	/**
+	 * 覆盖父类更新方法,增加对角色拥有的页面权限的数据更新逻辑
+	 */
+	@Override
+	public int update(UpcRole upcRole) {
+		int updateRows= super.update(upcRole);
+		
+		//保存角色拥有的页面数据
+		List<Integer> urlSids=upcRole.getUrlSids();
+		if(urlSids!=null && urlSids.size()>0){
+			updateRoleR2Page(upcRole);
+		}
+		
+		return updateRows;
+	}
+
+	/**
+	 * 覆盖父类删除方法,增加对角色拥有的页面权限的数据更新逻辑
+	 */
+	@Override
+	public void delete(UpcRole upcRole) {
+		//删除角色拥有的页面数据
+		deleteRoleR2Page(upcRole);
+		super.delete(upcRole);
+	}
+
+	@Override
+	public void insertRoleR2Page(UpcRole upcRole) {
+		upcRoleMapper.insertRoleR2Page(upcRole);
+	}
+
+	@Override
+	public void updateRoleR2Page(UpcRole upcRole) {
+		//先删除所有旧记录
+		deleteRoleR2Page(upcRole);
+		//再插入所有新纪录
+		insertRoleR2Page(upcRole);
+	}
+
+	@Override
+	public void deleteRoleR2Page(UpcRole upcRole) {
+		upcRoleMapper.deleteRoleR2Page(upcRole.getSid());
+	}
+
+	@Resource
+	private UpcRoleMapper upcRoleMapper;
 }

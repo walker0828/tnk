@@ -15,7 +15,7 @@
 
                 <a class="btn blue" href="#" data-toggle="dropdown">
 
-                    <i class="icon-cogs"></i> 操作
+                    <i class="icon-cogs"></i> 维护
 
                     <i class="icon-angle-down"></i>
 
@@ -23,11 +23,11 @@
 
                 <ul class="dropdown-menu pull-right">
 
-                    <li><a href="script:;" id="user_edit_table_add_btn"><i class="icon-plus"></i> 增加</a></li>
+                    <li><a href="#" id="user_edit_table_add_btn"><i class="icon-plus"></i> 增加</a></li>
 
-                    <li><a href="script:;" id="user_edit_table_edit_btn"><i class="icon-pencil"></i> 修改</a></li>
+                    <li><a href="#" id="user_edit_table_edit_btn"><i class="icon-pencil"></i> 修改</a></li>
 
-                    <li><a href="script:;" id="user_edit_table_del_btn"><i class="icon-trash"></i> 删除</a></li>
+                    <li><a href="#" id="user_edit_table_del_btn"><i class="icon-trash"></i> 删除</a></li>
 
                     <li class="divider"></li>
 
@@ -89,7 +89,7 @@
 
                 <form id="user_edit_form" action="page/user/save" class="form-horizontal">
 
-                    <div class="alert alert-error hide">
+                    <div class="alert alert-error hide" id="user_edit_win_error">
                         <!--<button class="close" data-dismiss="alert"></button>-->
                         您的输入有误,请检查.
                     </div>
@@ -105,7 +105,7 @@
 
                         <div class="controls">
 
-                            <input type="text" id="user_edit_win_account" name="account" class="m-wrap span12" placeholder="用来登陆系统的账号"/>
+                            <input type="text" id="user_edit_win_account" name="account" class="m-wrap span12" placeholder="用来登陆系统的账号" autofocus="autofocus"/>
 
                             <!--<span class="help-inline"></span>-->
 

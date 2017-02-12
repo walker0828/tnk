@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Writer;
 import java.lang.reflect.ParameterizedType;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -44,8 +43,6 @@ public class BaseAction<T extends AbstractEntity> {
 	 */
 	protected String singleQuery;
 
-	// the model
-	protected T entity;
 
 	// model's Class
 	protected Class<T> entityClass;
@@ -65,10 +62,6 @@ public class BaseAction<T extends AbstractEntity> {
 
 	public void setQm(Map<String, String> qm) {
 		this.qm = qm;
-	}
-
-	public T getModel() {
-		return entity;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -139,59 +132,6 @@ public class BaseAction<T extends AbstractEntity> {
 	@Autowired
 	private CustomObjectMapper customObjectMapper;
 
-	/**
-	 * 将 json 解析成相应实体对象集合 对 jsonToObject() 进行了功能扩展，该方法可以获得实体对象的集合
-	 * 
-	 * @param json
-	 *            json数据
-	 * @param cla
-	 *            实体类
-	 * @param <T>
-	 *            实体对象类型
-	 * @return 实体对象集合
-	 */
-	protected List<T> getObjectsFromJsonByObjectMapper(String json, Class<T> cla) {
-		// TODO 这个方法的效率有待提升
-		if (StringUtils.isNotEmpty(json) && cla != null) {
-			try {
-				List<T> list = new ArrayList<T>();
-				String[] strs = null; // 多条记录Json串，分割成单独的。将每一条记录作为一个数组元素
-
-				if (json.startsWith("[") && json.endsWith("]")) // 删除多条记录会进入此分支
-				{
-				} else if (json.startsWith("{") && json.endsWith("}")) // 删除一条记录会进入此分支
-				{
-					strs = json.split("$"); // 因为没有$这个字符，故字符串会被整体分割成一个数组
-				}
-
-				for (String str : strs) {
-					/**
-					 * 使用customObjectMapper将json转化为object
-					 * 原因：action与前台js传值转json方式保持一致
-					 */
-					list.add(customObjectMapper.readValue(str, cla));
-					// list.add(gson.fromJson(str, cla));
-				}
-				return list;
-
-			} catch (Exception e) {
-				System.out
-						.println("BaseAction : getListObjectsFromJson() function Excetion!");
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
-
-	// 保存数据
-	// @RequestMapping("/addBatchFromJson")
-	public void add() {
-		String jsonStr = getJsonFromRequest();
-		List<T> entityLs = getObjectsFromJsonByObjectMapper(jsonStr,
-				entityClass);
-		getBaseService().insertAll(entityLs);
-	}
-
 	public void save(T entity) {
 		if (entity != null) {
 			if (entity.getSid() != null && entity.getVersion() != null) {
@@ -202,15 +142,6 @@ public class BaseAction<T extends AbstractEntity> {
 				getBaseService().insert(entity);
 			}
 		}
-	}
-
-	// 更新数据
-	// @RequestMapping("/updateBatchFromJson")
-	public void update() {
-		String jsonStr = getJsonFromRequest();
-		List<T> entityLs = getObjectsFromJsonByObjectMapper(jsonStr,
-				entityClass);
-		getBaseService().updateAll(entityLs);
 	}
 
 	/**

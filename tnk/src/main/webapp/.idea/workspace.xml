@@ -2,22 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="add8cc4f-2d37-4cf6-936a-11389e878a3b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/css/role.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/role.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/js/role.js" />
-      <change type="DELETED" beforePath="E:\git\tnk\tnk\src\main\java\com\tenderlitch\controller\upc\PrivilegeAction.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\git\tnk\tnk\src\main\webapp\html\index.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../java/com/tenderlitch/mapper/upc/UpcUserMapper.java" afterPath="$PROJECT_DIR$/../java/com/tenderlitch/mapper/upc/UpcUserMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../java/com/tenderlitch/service/upc/impl/UpcUserServiceImpl.java" afterPath="$PROJECT_DIR$/../java/com/tenderlitch/service/upc/impl/UpcUserServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/table_advanced.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../java/com/tenderlitch/core/action/BaseAction.java" afterPath="$PROJECT_DIR$/../java/com/tenderlitch/core/action/BaseAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../java/com/tenderlitch/controller/upc/RoleAction.java" afterPath="$PROJECT_DIR$/../java/com/tenderlitch/controller/upc/RoleAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/java/com/tenderlitch/test/upc/RoleTest.java" afterPath="$PROJECT_DIR$/../../test/java/com/tenderlitch/test/upc/RoleTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../java/com/tenderlitch/controller/upc/UpcAction.java" afterPath="$PROJECT_DIR$/../java/com/tenderlitch/controller/upc/UpcAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../java/com/tenderlitch/entity/upc/UpcRole.java" afterPath="$PROJECT_DIR$/../java/com/tenderlitch/entity/upc/UpcRole.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../sqlmap/com/tenderlitch/mapper/upc/UpcRoleMapper.xml" afterPath="$PROJECT_DIR$/../sqlmap/com/tenderlitch/mapper/upc/UpcRoleMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../java/com/tenderlitch/service/upc/UpcRoleService.java" afterPath="$PROJECT_DIR$/../java/com/tenderlitch/service/upc/UpcRoleService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../java/com/tenderlitch/service/upc/impl/UpcRoleServiceImpl.java" afterPath="$PROJECT_DIR$/../java/com/tenderlitch/service/upc/impl/UpcRoleServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../java/com/tenderlitch/controller/upc/UserAction.java" afterPath="$PROJECT_DIR$/../java/com/tenderlitch/controller/upc/UserAction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/js/app.js" afterPath="$PROJECT_DIR$/media/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/applicationContext.xml" afterPath="$PROJECT_DIR$/../config/applicationContext.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/css/dataTable.css" afterPath="$PROJECT_DIR$/media/css/dataTable.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/form_component.html" afterPath="$PROJECT_DIR$/form_component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../mybatisGenerator.xml" afterPath="$PROJECT_DIR$/../../../mybatisGenerator.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../pom.xml" afterPath="$PROJECT_DIR$/../../../pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/js/jquery.multi-select.js" afterPath="$PROJECT_DIR$/media/js/jquery.multi-select.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/css/multi-select-metro.css" afterPath="$PROJECT_DIR$/media/css/multi-select-metro.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/plugins/jquery-multi-select/css/multi-select.css" afterPath="$PROJECT_DIR$/assets/plugins/jquery-multi-select/css/multi-select.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/role.html" afterPath="$PROJECT_DIR$/role.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/js/role.js" afterPath="$PROJECT_DIR$/media/js/role.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WEB-INF/tnk-servlet.xml" afterPath="$PROJECT_DIR$/WEB-INF/tnk-servlet.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user.html" afterPath="$PROJECT_DIR$/user.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/js/user.js" afterPath="$PROJECT_DIR$/media/js/user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="E:\git\tnk\tnk\src\main\java\com\tenderlitch\entity\upc\UpcPage.java" afterPath="$PROJECT_DIR$/../java/com/tenderlitch/entity/upc/UpcUrl.java" />
+      <change type="MOVED" beforePath="E:\git\tnk\tnk\src\main\java\com\tenderlitch\mapper\upc\UpcPageMapper.java" afterPath="$PROJECT_DIR$/../java/com/tenderlitch/mapper/upc/UpcUrlMapper.java" />
+      <change type="MOVED" beforePath="E:\git\tnk\tnk\src\main\java\com\tenderlitch\service\upc\UpcPageService.java" afterPath="$PROJECT_DIR$/../java/com/tenderlitch/service/upc/UpcUrlService.java" />
+      <change type="MOVED" beforePath="E:\git\tnk\tnk\src\main\java\com\tenderlitch\service\upc\impl\UpcPageServiceImpl.java" afterPath="$PROJECT_DIR$/../java/com/tenderlitch/service/upc/impl/UpcUrlServiceImpl.java" />
+      <change type="MOVED" beforePath="E:\git\tnk\tnk\src\main\sqlmap\com\tenderlitch\mapper\upc\UpcPageMapper.xml" afterPath="$PROJECT_DIR$/../sqlmap/com/tenderlitch/mapper/upc/UpcUrlMapper.xml" />
     </list>
     <ignored path="webapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,14 +50,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="role.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="role.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/role.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+              <caret line="120" column="37" selection-start-line="120" selection-start-column="37" selection-end-line="120" selection-end-column="37" />
               <folding>
                 <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form-components.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/media/js/form-components.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="438" column="5" selection-start-line="438" selection-start-column="5" selection-end-line="438" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form_component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/form_component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="2422" column="63" selection-start-line="2422" selection-start-column="58" selection-end-line="2422" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="role.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/media/js/role.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.47297296">
+              <caret line="20" column="81" selection-start-line="20" selection-start-column="81" selection-end-line="20" selection-end-column="81" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -53,30 +96,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="72" column="34" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="role.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/media/js/role.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="92" column="58" selection-start-line="92" selection-start-column="58" selection-end-line="92" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="role.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/media/css/role.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+            <state vertical-scroll-proportion="-2.8494623">
+              <caret line="795" column="87" selection-start-line="795" selection-start-column="87" selection-end-line="795" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -86,27 +107,7 @@
         <entry file="file://$PROJECT_DIR$/media/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="1001" column="8" selection-start-line="1001" selection-start-column="8" selection-end-line="1001" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="form_component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/form_component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="85" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="form-components.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/media/js/form-components.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="416" column="42" selection-start-line="416" selection-start-column="31" selection-end-line="416" selection-end-column="42" />
+              <caret line="1091" column="69" selection-start-line="1091" selection-start-column="54" selection-end-line="1091" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -153,19 +154,24 @@
         <option value="$PROJECT_DIR$/media/js/jquery.dataTables.js" />
         <option value="$PROJECT_DIR$/media/js/select2.min.js" />
         <option value="$PROJECT_DIR$/media/js/select2.js" />
-        <option value="$PROJECT_DIR$/media/css/dataTable.css" />
         <option value="$PROJECT_DIR$/media/css/style-metro.css" />
         <option value="$PROJECT_DIR$/media/css/style.css" />
         <option value="$PROJECT_DIR$/login.html" />
         <option value="$PROJECT_DIR$/media/js/login.js" />
         <option value="$PROJECT_DIR$/media/js/ajaxOverride.js" />
-        <option value="$PROJECT_DIR$/user.html" />
-        <option value="$PROJECT_DIR$/media/js/app.js" />
-        <option value="$PROJECT_DIR$/media/js/user.js" />
-        <option value="$PROJECT_DIR$/media/js/role.js" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/role.html" />
         <option value="$PROJECT_DIR$/media/css/role.css" />
+        <option value="$PROJECT_DIR$/media/js/jquery.multi-select.js" />
+        <option value="$PROJECT_DIR$/assets/plugins/jquery-multi-select/README.markdown" />
+        <option value="$PROJECT_DIR$/form_component.html" />
+        <option value="$PROJECT_DIR$/media/css/multi-select-metro.css" />
+        <option value="$PROJECT_DIR$/media/js/user.js" />
+        <option value="$PROJECT_DIR$/user.html" />
+        <option value="$PROJECT_DIR$/media/css/dataTable.css" />
+        <option value="$PROJECT_DIR$/assets/plugins/jquery-multi-select/css/multi-select.css" />
+        <option value="$PROJECT_DIR$/role.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/media/js/app.js" />
+        <option value="$PROJECT_DIR$/media/js/role.js" />
       </list>
     </option>
   </component>
@@ -178,7 +184,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="width" value="1932" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -204,6 +211,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -222,10 +230,41 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -239,9 +278,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\git\tnk\tnk\src\main\webapp" />
       <recent name="E:\git\tnk\tnk\src\main\webapp\media\js" />
       <recent name="E:\git\tnk\tnk\src\main\webapp\media\css" />
-      <recent name="E:\git\tnk\tnk\src\main\webapp" />
       <recent name="E:\git\tnk\tnk\src\main\webapp\assets" />
       <recent name="E:\git\tnk\tnk\src\main\webapp\media\image" />
     </key>
@@ -300,26 +339,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1932" height="1056" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22463003" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22310127" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297062" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32861805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -340,62 +379,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/plugins/uniform/jquery.uniform.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="968" column="4" selection-start-line="968" selection-start-column="4" selection-end-line="968" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/plugins/select2/select2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32051283">
-          <caret line="3063" column="0" selection-start-line="3063" selection-start-column="0" selection-end-line="3063" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/js/DT_bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/css/select2_metro.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/css/select2.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/js/select2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="2737" column="31" selection-start-line="2737" selection-start-column="8" selection-end-line="2737" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/js/select2.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07094595">
-          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/css/bootstrap-tag.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23873875">
-          <caret line="20" column="3" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/media/css/DT_bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -407,20 +390,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="33693" selection-start-line="8" selection-start-column="33693" selection-end-line="8" selection-end-column="33693" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/css/dataTable.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="53" selection-start-line="1" selection-start-column="53" selection-end-line="1" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/plugins/jquery-validation/lib/jquery.form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="1038" column="12" selection-start-line="1038" selection-start-column="12" selection-end-line="1038" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -568,24 +537,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/media/js/ajaxOverride.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/media/js/chosen.jquery.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55944055">
-          <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -596,77 +551,158 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/media/js/app.js">
+    <entry file="file://$PROJECT_DIR$/media/css/role.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="1001" column="8" selection-start-line="1001" selection-start-column="8" selection-end-line="1001" selection-end-column="8" />
-          <folding />
+          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/media/js/user.js">
+    <entry file="file://$PROJECT_DIR$/assets/plugins/jquery-validation/lib/jquery.form.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4042793">
-          <caret line="184" column="44" selection-start-line="184" selection-start-column="44" selection-end-line="184" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="612" column="31" selection-start-line="612" selection-start-column="26" selection-end-line="612" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/plugins/jquery-validation/dist/jquery.validate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="311" column="36" selection-start-line="311" selection-start-column="36" selection-end-line="311" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/image/switch.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/plugins/jquery-multi-select/README.markdown">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04895105">
+          <caret line="2" column="74" selection-start-line="2" selection-start-column="74" selection-end-line="2" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/js/jquery.validate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1224" column="37" selection-start-line="1224" selection-start-column="37" selection-end-line="1224" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/css/multi-select-metro.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-46.1">
+          <caret line="98" column="14" selection-start-line="98" selection-start-column="14" selection-end-line="98" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/js/jquery.multi-select.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.21283785">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="11.376344">
+          <caret line="36" column="12" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/js/ajaxOverride.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23648648">
+          <caret line="10" column="38" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-44.8">
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/js/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="108" column="38" selection-start-line="108" selection-start-column="34" selection-end-line="108" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/table_advanced.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1630" column="60" selection-start-line="1630" selection-start-column="60" selection-end-line="1630" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/js/table-advanced.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="72" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/css/dataTable.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="53" selection-start-line="1" selection-start-column="53" selection-end-line="1" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/plugins/jquery-multi-select/css/multi-select.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="91" column="15" selection-start-line="91" selection-start-column="15" selection-end-line="91" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/js/form-components.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="416" column="42" selection-start-line="416" selection-start-column="31" selection-end-line="416" selection-end-column="42" />
+          <caret line="438" column="5" selection-start-line="438" selection-start-column="5" selection-end-line="438" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/js/role.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="92" column="58" selection-start-line="92" selection-start-column="58" selection-end-line="92" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/form_component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/css/role.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="34" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/role.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <caret line="120" column="37" selection-start-line="120" selection-start-column="37" selection-end-line="120" selection-end-column="37" />
           <folding>
             <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/form_component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="2422" column="63" selection-start-line="2422" selection-start-column="58" selection-end-line="2422" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.8494623">
+          <caret line="795" column="87" selection-start-line="795" selection-start-column="87" selection-end-line="795" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1091" column="69" selection-start-line="1091" selection-start-column="54" selection-end-line="1091" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/js/role.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47297296">
+          <caret line="20" column="81" selection-start-line="20" selection-start-column="81" selection-end-line="20" selection-end-column="81" />
+          <folding />
         </state>
       </provider>
     </entry>
