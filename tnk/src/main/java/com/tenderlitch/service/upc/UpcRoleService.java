@@ -1,4 +1,6 @@
 package com.tenderlitch.service.upc;
+import java.util.List;
+
 import com.tenderlitch.core.service.BaseService;
 import com.tenderlitch.entity.upc.UpcRole;
 
@@ -25,5 +27,11 @@ public interface UpcRoleService extends BaseService<UpcRole> {
 	 * @param upcRole
 	 */
 	void deleteRoleR2Page(UpcRole upcRole);
+
+	/**
+	 * 为用户界面编辑角色时查询所有角色信息,只包含roleName和sid
+	 * @return
+	 */
+	List<UpcRole> findRolesForUser();
 }
 

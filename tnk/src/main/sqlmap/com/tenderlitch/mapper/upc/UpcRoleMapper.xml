@@ -41,6 +41,12 @@
     	</if>
     </trim>
   </select>  
+  
+  <!-- 为用户页面查出所有角色信息 -->
+  <select id="findAllRolesForUser" resultType="com.tenderlitch.entity.upc.UpcRole">
+  	select sid, name from upc_role
+  </select>
+  
   <delete id="delete" parameterType="com.tenderlitch.entity.upc.UpcRole" >
     delete from upc_role
     where SID = #{sid,jdbcType=INTEGER} and VERSION=#{version,jdbcType=INTEGER}
@@ -108,4 +114,19 @@
   <delete id="deleteRoleR2Page" parameterType="int">
   	delete from upc_role_r2_url where role_sid=${value}
   </delete>
+  
+  <!-- 根据用户Sid查找用户的角色 -->
+  <select id="findRoleByUserSid" parameterType="int" resultType="com.tenderlitch.entity.upc.UpcRole">
+  	SELECT
+		r. NAME,
+		r.SID
+	FROM
+		upc_role_r2_user r2u,
+		upc_role r,
+		upc_user u
+	WHERE
+		u.sid = r2u.USER_SID
+	AND r.SID = r2u.ROLE_SID
+	AND u.sid = ${value}
+  </select>
 </mapper>

@@ -26,4 +26,23 @@ public interface UpcUserMapper  extends BaseMapper<UpcUser> {
 	 * @return
 	 */
 	int findCountByAccount(String account);
+	
+	/**
+	 * 插入用户的角色信息
+	 * @param user
+	 */
+	void insertUserR2Role(UpcUser user);
+	
+	/**
+	 * 根据用户Sid删除用户的角色信息
+	 * @param userSid
+	 */
+	void deleteUserR2RoleByUserSid(Integer userSid);
+	
+	/**
+	 * 根据角色Sid删除用户的角色信息
+	 * @param userSid
+	 */
+	void deleteUserR2RoleByRoleSid(Integer roleSid);
+	
 }

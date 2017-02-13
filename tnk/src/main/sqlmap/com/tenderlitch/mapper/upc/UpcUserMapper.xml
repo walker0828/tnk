@@ -4,12 +4,12 @@
   <resultMap id="BaseResultMap" type="com.tenderlitch.entity.upc.UpcUser" >
     <id column="SID" property="sid" jdbcType="INTEGER" />
     <result column="ACCOUNT" property="account" jdbcType="VARCHAR" />
-    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
     <result column="EMAIL" property="email" jdbcType="VARCHAR" />
     <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
-  </resultMap>
+    <collection property="roles" column="SID" ofType="com.tenderlitch.entity.upc.UpcRole" select="com.tenderlitch.mapper.upc.UpcRoleMapper.findRoleByUserSid"></collection>
+  </resultMap> 
   <sql id="Base_Column_List" >
-    SID, ACCOUNT, PASSWORD, EMAIL, DESCRIPTION
+    SID, ACCOUNT, EMAIL, DESCRIPTION
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -112,4 +112,30 @@
     </set>
     where SID = #{sid,jdbcType=INTEGER} and VERSION = #{version,jdbcType=INTEGER}
   </update>
+  
+  <!-- 插入用户的角色信息 -->
+  <insert id="insertUserR2Role"  parameterType="com.tenderlitch.entity.upc.UpcUser">
+  	INSERT INTO upc_role_r2_user (USER_SID, ROLE_SID) values
+  	<foreach collection="roleSids" item="roleSid" separator=",">
+  		(#{sid,jdbcType=DECIMAL},#{roleSid,jdbcType=DECIMAL})
+  	</foreach>
+  </insert>
+  
+  <!-- 根据用户的sid删除用户的角色信息 -->
+  <delete id="deleteUserR2RoleByUserSid" parameterType="int">
+	DELETE
+	FROM
+		upc_role_r2_user
+	WHERE
+		USER_SID = ${value}
+  </delete>
+  
+  <!-- 根据用户的sid删除用户的角色信息 -->
+  <delete id="deleteUserR2RoleByRoleSid" parameterType="int">
+	DELETE
+	FROM
+		upc_role_r2_user
+	WHERE
+		ROLE_SID = ${value}
+  </delete>
 </mapper>

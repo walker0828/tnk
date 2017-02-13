@@ -4,45 +4,6 @@
  */
 var RoleTable = function () {
 
-    /**
-     * 初始化编辑窗口多选控件
-     */
-    var initMultiSelector=function(pagesSelector){
-        $.ajax({
-            url:'page/role/getUrls',
-            dataType:'json',
-            success:function(data){
-                if(data && data.length>0){
-                    $.each(data,function(inx,group){
-                        if(group){
-                            var optGroup=$('<optgroup>').attr('label',group['name']);
-                            if(group['urls'] && group['urls'].length>0){
-                                $.each(group['urls'],function(inx,url){
-                                    var option=$('<option>').val(url['sid']).html(url['name']);
-                                    optGroup.append(option);
-                                });
-                            }
-                            pagesSelector.append(optGroup);
-                        }
-                    });
-                }
-                pagesSelector.multiSelect({
-                    //增加"可选区域"和"已选区域"
-                    selectableHeader:'<div class="selectable-header">可选项</div>',
-                    selectionHeader:'<div class="selection-header">已选项</div>',
-                    //为multiselect触发单独的validate处理过程,因为jquery.validate不会监控multiselect
-                    afterSelect:function(){
-                        this.$element.valid();
-                    },
-                    afterDeselect:function(){
-                        this.$element.valid();
-                    }
-                });
-            }
-        })
-
-    };
-
     return {
 
         //main function to initiate the module
@@ -99,7 +60,7 @@ var RoleTable = function () {
                 role_edit_win_modal=$('#role_edit_win');
 
             //初始化form表单中的多选框
-            initMultiSelector(pagesSelector);
+            App.initFormMultiSelect(pagesSelector,'page/role/getUrls','name','sid',{groupName:'name',groupValue:'urls'});
 
             //编辑窗口的验证
             App.validateForm(form1,{

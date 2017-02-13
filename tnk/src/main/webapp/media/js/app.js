@@ -1133,6 +1133,78 @@ var App = function () {
             };
             var opt= $.extend({},_default,option);
             return form.validate(opt);
+        },
+
+        /**
+         * 选项是分组的
+         * 数据应该是如下形式:
+         * [
+         * {
+         *     groupname:'groupName',
+         *     groupDatas:[
+         *         {display:'displayValue',value:'value'},
+         *         ...
+         *     ]
+         * },
+         * ...
+         * ]
+         * 如果不是分组的,
+         * 数据应该是如下形式
+         * [
+         * {display:'displayValue',value:'value'},
+         * ...
+         * ]
+         *
+         * @param selector
+         * @param url
+         * @param displayField
+         * @param valueField
+         * @param groupOption 格式如下
+         * {groupName:'name',groupValue:'value'}
+         */
+        initFormMultiSelect: function(selector,url,displayField,valueField,groupOption){
+            $.ajax({
+                url:url,
+                dataType:'json',
+                success:function(data){
+                    if(data && data.length>0){
+                        if(groupOption){
+                            $.each(data,function(inx,group){
+                                if(group){
+                                    var optGroup=$('<optgroup>').attr('label',group[groupOption['groupName']]);
+                                    if(group[groupOption['groupValue']] && group[groupOption['groupValue']].length>0){
+                                        $.each(group[groupOption['groupValue']],function(inx,data){
+                                            var option=$('<option>').val(data[valueField]).html(data[displayField]);
+                                            optGroup.append(option);
+                                        });
+                                    }
+                                    selector.append(optGroup);
+                                }
+                            });
+                        }else{
+                            $.each(data,function(inx,data){
+                                if(data){
+                                    var option=$('<option>').val(data[valueField]).html(data[displayField]);
+                                    selector.append(option);
+                                }
+                            });
+                        }
+                    }
+                    selector.multiSelect({
+                        //增加"可选区域"和"已选区域"
+                        selectableHeader:'<div class="selectable-header">可选项</div>',
+                        selectionHeader:'<div class="selection-header">已选项</div>',
+                        //为multiselect触发单独的validate处理过程,因为jquery.validate不会监控multiselect
+                        afterSelect:function(){
+                            this.$element.valid();
+                        },
+                        afterDeselect:function(){
+                            this.$element.valid();
+                        }
+                    });
+                }
+            })
+
         }
 
     };

@@ -1,5 +1,7 @@
 package com.tenderlitch.mapper.upc;
 
+import java.util.List;
+
 import com.tenderlitch.core.mapper.BaseMapper;
 import com.tenderlitch.core.repository.BaseRepository;
 import com.tenderlitch.entity.upc.UpcRole;
@@ -22,4 +24,10 @@ public interface UpcRoleMapper  extends BaseMapper<UpcRole> {
 	 * @param sid
 	 */
 	void deleteRoleR2Page(Integer sid);
-}
+	
+	/**
+	 * 为用户列出所有角色,只包含sid和name信息
+	 * @return
+	 */
+	List<UpcRole> findAllRolesForUser();
+ }

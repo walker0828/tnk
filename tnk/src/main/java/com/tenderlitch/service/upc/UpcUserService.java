@@ -23,5 +23,11 @@ public interface UpcUserService extends BaseService<UpcUser> {
 	 * @return
 	 */
 	UpcUser findUser(String account, String password);
+	
+	/**
+	 * 通过角色Sid删除用户的角色信息(供删除角色时使用)
+	 * @param roleSid
+	 */
+	void deleteUserR2RoleByRoleSid(Integer roleSid);
 }
 

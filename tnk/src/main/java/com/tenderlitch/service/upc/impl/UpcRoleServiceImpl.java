@@ -10,6 +10,7 @@ import com.tenderlitch.core.service.BaseCRUDService;
 import com.tenderlitch.entity.upc.UpcRole;
 import com.tenderlitch.mapper.upc.UpcRoleMapper;
 import com.tenderlitch.service.upc.UpcRoleService;
+import com.tenderlitch.service.upc.UpcUserService;
 
 /**
  * 页面权限业务逻辑处理器接口实现
@@ -59,6 +60,8 @@ public class UpcRoleServiceImpl extends BaseCRUDService<UpcRole> implements UpcR
 	public void delete(UpcRole upcRole) {
 		//删除角色拥有的页面数据
 		deleteRoleR2Page(upcRole);
+		//删除角色和用户的关联信息
+		upcUserService.deleteUserR2RoleByRoleSid(upcRole.getSid());
 		super.delete(upcRole);
 	}
 
@@ -80,6 +83,14 @@ public class UpcRoleServiceImpl extends BaseCRUDService<UpcRole> implements UpcR
 		upcRoleMapper.deleteRoleR2Page(upcRole.getSid());
 	}
 
+	@Override
+	public List<UpcRole> findRolesForUser() {
+		return upcRoleMapper.findAllRolesForUser();
+	}
+
 	@Resource
 	private UpcRoleMapper upcRoleMapper;
+	
+	@Resource
+	private UpcUserService upcUserService;
 }

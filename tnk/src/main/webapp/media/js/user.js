@@ -17,7 +17,7 @@ var UserTable = function () {
                             return '<input type="radio" class="checkboxes" name="user-table-radio"/>';
                         }},
                         { "mDataProp": "account" },
-                        { "mDataProp": "password", "bSortable": false },
+                        { "mDataProp": "rolesString", "bSortable": false },
                         { "mDataProp": "email" },
                         { "mDataProp": "description", "bSortable": false }
                     ],
@@ -25,7 +25,11 @@ var UserTable = function () {
                 });
 
             //编辑窗口的验证
-            var form1 = $('#user_edit_form');
+            var form1 = $('#user_edit_form'),
+                rolesSelector=$('#user_edit_win_roles',form1);
+
+            //初始化form表单中的多选框
+            App.initFormMultiSelect(rolesSelector,'page/role/getRoles','name','sid');
 
             //编辑窗口的验证
             App.validateForm(form1,{
@@ -72,6 +76,7 @@ var UserTable = function () {
             $('#user_edit_table_add_btn').click(function(e){
                 e.preventDefault();
                 App.resetForm(form1);
+                rolesSelector.multiSelect('refresh');
                 //设置account输入框为可编辑
                 $('#user_edit_win_account',form1).removeProp('readonly')
                     .removeClass('ignore');//设置account不需要校验
@@ -92,6 +97,7 @@ var UserTable = function () {
                     $('#user_edit_win_account',form1).prop('readonly',true)
                         .addClass('ignore');//设置account不需要校验
                     App.bindForm(form1,aData);
+                    rolesSelector.multiSelect('refresh');
                     user_edit_win_modal.modal();
                 }else{
                     App.message('请选择要修改的用户');

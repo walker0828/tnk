@@ -13,6 +13,7 @@ import com.tenderlitch.core.action.BaseAction;
 import com.tenderlitch.core.web.AjaxResponse;
 import com.tenderlitch.entity.upc.UpcRole;
 import com.tenderlitch.entity.upc.UpcUrlGroup;
+import com.tenderlitch.service.upc.UpcRoleService;
 import com.tenderlitch.service.upc.UpcUrlService;
 
 /**
@@ -44,22 +45,41 @@ public class RoleAction extends BaseAction<UpcRole>{
 		return upcPageService.findAllGroup();
 	}
 	
+	/**
+	 * 页面上编辑角色之后的保存动作
+	 */
 	@RequestMapping("/save")
 	@Override
 	public void save(UpcRole upcRole){
 		super.save(upcRole);
 	}
 	
+	/**
+	 * 页面上删除角色的动作
+	 */
 	@RequestMapping("/destroy")
 	@Override
 	public void destroy(UpcRole upcRole) {
 		super.destroy(upcRole);
 	}
 
+	/**
+	 * 角色页面数据表格查询数据的动作
+	 */
 	@RequestMapping("/findByPage")
 	@Override
 	public AjaxResponse findByPage() throws Exception {
 		return super.findByPage();
+	}
+	
+	/**
+	 * 获得所有角色信息(用来填充用户维护界面的"角色"多选菜单)
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/getRoles")
+	public List<UpcRole> getRoles(){
+		return upcRoleService.findRolesForUser();
 	}
 
 	/**
@@ -67,5 +87,11 @@ public class RoleAction extends BaseAction<UpcRole>{
 	 */
 	@Resource
 	private UpcUrlService upcPageService;
+	
+	/**
+	 * 角色数据接口
+	 */
+	@Resource
+	private UpcRoleService upcRoleService;
 	
 }
