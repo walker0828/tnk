@@ -1,2 +1,2 @@
 # tnk
-tnk公司内部仓储管理系统
+一个使用bootstrap和metronic模板的小型内部数据管理系统,使用springMVC和mybatis来实现MVC架构,数据库使用MySQL,拥有数据维护页面模板和权限控制.
