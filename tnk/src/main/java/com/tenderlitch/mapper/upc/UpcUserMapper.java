@@ -1,5 +1,7 @@
 package com.tenderlitch.mapper.upc;
 
+import java.util.Set;
+
 import com.tenderlitch.core.mapper.BaseMapper;
 import com.tenderlitch.core.repository.BaseRepository;
 import com.tenderlitch.entity.upc.UpcUser;
@@ -44,5 +46,12 @@ public interface UpcUserMapper  extends BaseMapper<UpcUser> {
 	 * @param userSid
 	 */
 	void deleteUserR2RoleByRoleSid(Integer roleSid);
+	
+	/**
+	 * 根据用户的Sid查找有权限的Urls
+	 * @param userSid
+	 * @return
+	 */
+	Set<String> findUserAvailableUrls(Integer userSid);
 	
 }

@@ -60,6 +60,14 @@ public class AjaxResponse {
 	}
 	
 	/**
+	 * 无资源访问权限
+	 * @return
+	 */
+	public static AjaxResponse notAvailable(String resource){
+		return new AjaxResponse(ResponseStatus.NOT_AVAILABLE,resource);
+	}
+	
+	/**
 	 * 只能从工厂中获得实例
 	 */
 	private AjaxResponse(){}

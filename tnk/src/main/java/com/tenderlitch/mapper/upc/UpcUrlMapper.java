@@ -29,4 +29,11 @@ public interface UpcUrlMapper  extends BaseMapper<UpcUrl> {
 	 */
 	List<UpcUrlGroup> findGroup();
 	
+	/**
+	 * 通过链接地址获得资源的显示字符串
+	 * @param url
+	 * @return
+	 */
+	String findUrlResourceByUrl(String url);
+	
 }

@@ -37,7 +37,7 @@ public class UpcAction {
 		UpcUser user=upcUserService.findUser(username, password);
 		if(user!=null){//校验通过
 			//在session中保存user信息
-			LoginUtil.save2Session(request.getSession(),"liuxing");
+			LoginUtil.save2Session(request.getSession(),user);
 			//如果是ajax请求,返回约定好的JSON串
 			if(WebUtil.isRequestAjax(request)){
 				customObjectMapper.writeValue(response.getWriter(), AjaxResponse.success());

@@ -40,7 +40,7 @@ var UserTable = function () {
                         required: true,
                         remote:'page/user/accountValid'
                     },
-                    password: {
+                    /*password: {
                         minlength: 6,
                         maxlength: 32,
                         required: true
@@ -51,7 +51,7 @@ var UserTable = function () {
                         minlength: 6,
                         maxlength: 32,
                         required: true
-                    },
+                    },*/
                     email: {
                         required: true,
                         email: true
@@ -91,8 +91,6 @@ var UserTable = function () {
                 if(selectedRow){
                     var aData = oTable.fnGetData(selectedRow);
                     App.resetForm(form1);
-                    //将密码框的值设置到重复密码框中去
-                    aData['password2']=aData['password'];
                     //设置account输入框为不可编辑
                     $('#user_edit_win_account',form1).prop('readonly',true)
                         .addClass('ignore');//设置account不需要校验

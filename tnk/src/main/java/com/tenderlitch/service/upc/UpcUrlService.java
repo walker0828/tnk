@@ -18,5 +18,11 @@ public interface UpcUrlService extends BaseService<UpcUrl> {
 	 */
 	List<UpcUrlGroup> findAllGroup();
 
+	/**
+	 * 查找权限的显示字符串(无权限用户的页面显示用)
+	 * @param url
+	 * @return
+	 */
+	String findUrlResourceByUrl(String url);
 }
 

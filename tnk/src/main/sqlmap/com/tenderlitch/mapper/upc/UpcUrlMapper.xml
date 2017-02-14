@@ -76,4 +76,15 @@
   		</if>
   	</trim>
   </select>
+  
+  <select id="findUrlResourceByUrl" parameterType="string" resultType="string">
+  	SELECT
+		CONCAT('[', g. NAME, ']', u. NAME)
+	FROM
+		upc_url u,
+		upc_url_group g
+	WHERE
+		u.GROUP_SID = g.SID
+	AND u.URL = #{value,jdbcType=VARCHAR}
+  </select>
 </mapper>

@@ -3,18 +3,21 @@ package com.tenderlitch.core.interceptor;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.tenderlitch.core.exception.NotLoginException;
+import com.tenderlitch.core.exception.ResourceNotAvailableException;
 import com.tenderlitch.core.util.WebUtil;
 import com.tenderlitch.core.web.LoginUtil;
+import com.tenderlitch.entity.upc.UpcUser;
+import com.tenderlitch.service.upc.UpcUrlService;
+import com.tenderlitch.service.upc.UpcUserService;
 
 public class PrivilegeInterceptor extends HandlerInterceptorAdapter {
-
-	// TODO 目前这个类没有任何作用,需要决定删除还是增加能起权限控制作用的方法
 
 	@Override
 	public boolean preHandle(HttpServletRequest request,
@@ -31,13 +34,32 @@ public class PrivilegeInterceptor extends HandlerInterceptorAdapter {
 		 * false; }
 		 */
 		//isFreeToAccessUrl(url)
-		if (ACTION_URL_LOGIN.equals(url) || LoginUtil.isLogined(request.getSession())) {
+		UpcUser user=LoginUtil.getCurrentUser(request.getSession());
+		if (ACTION_URL_LOGIN.equals(url)) {
 			return super.preHandle(request, response, handler);
+		}else if(user!=null){
+			Set<String> availableUrls=upcUserService.getUserAvailableUrls(user.getSid());
+			//白名单模式,只有被列为有权限访问的资源才允许通过
+			if(availableUrls!=null && availableUrls.contains(url)){
+				//有权限访问资源
+				return super.preHandle(request, response, handler);
+			}else{
+				//如果是ajax请求,返回约定好的JSON串
+				if(WebUtil.isRequestAjax(request)){
+					String resourceName=upcUrlService.findUrlResourceByUrl(url);
+					resourceName=resourceName!=null?resourceName:url;//如果访问的资源未配置权限,用URL代替,给开发人员使用
+					throw new ResourceNotAvailableException(resourceName);//交由统一的异常处理器来处理响应
+				}
+				//如果是提交表单的请求,显示404页面
+				else{
+					String contextPath = request.getContextPath();
+					response.sendRedirect(contextPath + PAGE_URL_404);
+				}
+				return false;
+			}
 		}else{
 			//如果是ajax请求,返回约定好的JSON串
 			if(WebUtil.isRequestAjax(request)){
-//				response.setStatus(500);
-//				customObjectMapper.writeValue(response.getWriter(), AjaxResponse.notLogOn());
 				throw new NotLoginException();//交由统一的异常处理器来处理响应
 			}
 			//如果是提交表单的请求,返回login页面
@@ -49,30 +71,11 @@ public class PrivilegeInterceptor extends HandlerInterceptorAdapter {
 		}
 	}
 	
-//	@Resource
-//	private CustomObjectMapper customObjectMapper;
-	
-	/*private static boolean isFreeToAccessUrl(String url){
-		return PUBLIC_URLS.contains(url) || isStaticResources(url);
-	}*/
-
-	/*private static boolean isStaticResources(String url) {
-		return url!=null &&(
-				url.endsWith(STATIC_RESOURCES_SUFIX_CSS)
-				||url.endsWith(STATIC_RESOURCES_SUFIX_JS)
-				||url.endsWith(STATIC_RESOURCES_SUFIX_PNG)
-				||url.endsWith(STATIC_RESOURCES_SUFIX_JPG)
-				||url.endsWith(STATIC_RESOURCES_SUFIX_GIF)
-				||url.endsWith(STATIC_RESOURCES_SUFIX_ICO)
-				);
-	}*/
-	
 	/**
 	 * 几个固有页面的访问地址
 	 */
 	private static final String PAGE_URL_404="/404.html",
 			PAGE_URL_LOGIN="/login.html",
-//			PAGE_URL_INDEX="/index.html",
 			ACTION_URL_LOGIN="/login";
 
 	/**
@@ -84,15 +87,17 @@ public class PrivilegeInterceptor extends HandlerInterceptorAdapter {
 		PUBLIC_URLS.add(PAGE_URL_404);
 		PUBLIC_URLS.add(PAGE_URL_LOGIN);
 	}
-
+	
 	/**
-	 * 不用校验权限的静态资源,url以xx结尾
+	 * 用户权限业务接口
 	 */
-	/*private static final String STATIC_RESOURCES_SUFIX_JS = ".js",
-			STATIC_RESOURCES_SUFIX_CSS = ".css",
-			STATIC_RESOURCES_SUFIX_PNG = ".png",
-			STATIC_RESOURCES_SUFIX_JPG = ".jpg",
-			STATIC_RESOURCES_SUFIX_GIF = ".gif",
-			STATIC_RESOURCES_SUFIX_ICO=".ico";*/
+	@Resource
+	private UpcUserService upcUserService;
+	
+	/**
+	 * 资源权限业务接口
+	 */
+	@Resource
+	private UpcUrlService upcUrlService;
 
 }

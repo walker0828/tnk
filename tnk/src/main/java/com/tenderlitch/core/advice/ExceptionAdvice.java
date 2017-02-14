@@ -25,6 +25,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 
 import com.tenderlitch.core.exception.BaseRuntimeException;
 import com.tenderlitch.core.exception.NotLoginException;
+import com.tenderlitch.core.exception.ResourceNotAvailableException;
 import com.tenderlitch.core.service.AppServiceHelper;
 import com.tenderlitch.core.web.AjaxResponse;
 
@@ -141,6 +142,17 @@ public class ExceptionAdvice {
     public AjaxResponse handleNotLoginException(Exception e) {
         return AjaxResponse.notLogOn();
     }
+    
+    /**
+     * 403 - 无资源访问权限
+     */
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ExceptionHandler(ResourceNotAvailableException.class)
+    public AjaxResponse handleResourceNotAvailableException(Exception e) {
+    	ResourceNotAvailableException rnae=(ResourceNotAvailableException)e;
+        return AjaxResponse.notAvailable(rnae.getResource());
+    }
+    
     
     /**
      * 500 - 业务异常

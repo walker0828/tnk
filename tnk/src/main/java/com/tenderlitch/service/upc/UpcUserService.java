@@ -1,4 +1,6 @@
 package com.tenderlitch.service.upc;
+import java.util.Set;
+
 import com.tenderlitch.core.service.BaseService;
 import com.tenderlitch.entity.upc.UpcUser;
 
@@ -29,5 +31,12 @@ public interface UpcUserService extends BaseService<UpcUser> {
 	 * @param roleSid
 	 */
 	void deleteUserR2RoleByRoleSid(Integer roleSid);
+	
+	/**
+	 * 通过用户的Sid查找有权限的URL集合
+	 * @param userSid
+	 * @return
+	 */
+	Set<String> getUserAvailableUrls(Integer userSid);
 }
 

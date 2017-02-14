@@ -138,4 +138,22 @@
 	WHERE
 		ROLE_SID = ${value}
   </delete>
+  
+  <!-- 根据用户的Sid查找用户有权限的Url -->
+  <select id="findUserAvailableUrls" parameterType="int" resultType="string">
+  	SELECT
+		l.URL
+	FROM
+		upc_user u,
+		upc_role_r2_url r2u,
+		upc_role_r2_user r2s,
+		upc_role r,
+		upc_url l
+	WHERE
+		r.SID = r2u.ROLE_SID
+	AND r2u.URL_SID = l.SID
+	AND r.SID = r2s.ROLE_SID
+	AND r2s.USER_SID = u.SID
+	AND u.SID = ${value}
+  </select>
 </mapper>

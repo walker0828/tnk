@@ -4,8 +4,9 @@
  */
 $.ajaxSetup({
     error:function(response){
-        if (!response || response.status == 0)
-            return;
+        //移除loading状态(不管有没有)
+        App.unblockUI($('.page-content'));
+
         if (response.status == 401) { //未登录或登录超时
             App.message({
                 text:"您还未登陆或登录超时,关闭提示将跳转到登录页.",
@@ -15,10 +16,12 @@ $.ajaxSetup({
                 }
             });
         }else if (response.status == 403) { //无权限
-            App.message("您无权限执行当前操作!");
+            var resourceString=(response.responseText)? $.parseJSON(response.responseText)['msg']:'';
+            App.message("访问资源: "+resourceString+" 被拒绝!");
         }else if (response.status == 500) { //后台异常
-            if(response.responseJSON && response.responseJSON.msg){
-                App.message(response.responseJSON.msg);
+            var msgString=(response.responseText)? $.parseJSON(response.responseText)['msg']:'';
+            if(msgString){
+                App.message(msgString);
             }else{
                 App.message("后台出错,响应详情:"+response);
             }

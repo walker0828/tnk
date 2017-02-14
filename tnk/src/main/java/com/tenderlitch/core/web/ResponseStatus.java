@@ -20,7 +20,11 @@ public enum ResponseStatus {
 	/**
 	 * 处理失败
 	 */
-	FAILURE(2);
+	FAILURE(2),
+	/*
+	 * 无访问权限
+	 */
+	NOT_AVAILABLE(4);
 	
 	public int getStatus() {
 		return status;
